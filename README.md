@@ -5,6 +5,7 @@ A tool for securely distributing Cisco CCNA lab credentials to students via emai
 ## Features
 
 - **Interactive GUI**: Mark attendance with checkboxes before sending credentials
+- **Tabbed workflow**: One tab for new distribution and one tab for already sent credentials/resend
 - **Flexible roster parsing**: Supports CSV, TSV, or freeform email lists
 - **Robust credential extraction**: Handles various formatting of username/password pairs
 - **Email tracking**: Saves logs of sent and unsent credentials
@@ -109,6 +110,12 @@ After running the tool, the following files are created:
 - **`sent_mapping.csv`**: Records of credentials sent to attending students
 - **`unused_mapping.csv`**: Mapping of unused credentials to absent students (if applicable)
 - **`distribute_creds.log`**: Complete audit log of all operations
+
+When rerunning the tool, it will:
+
+- automatically exclude roster students already present in `sent_mapping.csv`
+- prefer reusable credentials from `unused_mapping.csv`
+- warn if `sent_mapping.csv` does not contain credentials that match the current `creds.txt`
 
 ## Security Notes
 
